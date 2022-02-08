@@ -110,7 +110,7 @@ int order(vector<int>& russian, vector<int>& korean){
 전체 시간 복잡도는 O(n log n)이 된다.
 
 + multiset의 내장함수<br>
-lower_bound의 사용
+lower_bound의 사용<br>
 ![lower_bound](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=http%3A%2F%2Fcfile5.uf.tistory.com%2Fimage%2F237CB933597967992FCCE5)
 
 + algorithm 라이브러리의 sort 함수 사용법( 기본적으로 오름차순 정렬)<br> 
