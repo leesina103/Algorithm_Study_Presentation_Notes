@@ -20,7 +20,7 @@
 
 이 방식을 보고, LIS가 생각 났습니다. 비슷한 방식인 것 같다.<br><br>
 
-![](KakaoTalk_20220209_170349335.png)
+![](KakaoTalk_20220209_170349335.png)<br>
 책에 나와있는 그림을 보면, 한 줄이 한 팀인 것 같은데, 책의 코드를 보면 책의 그림에서 나와있는 마지막 줄은 3개로 분할 저장하는데, 그럼 띄어져있는 기준이 한 팀인지 헷갈린다.<br>
 order.push_back(make_pair(end[i], begin[i])); // 이런 코드 대로라면, 마지막 줄은 3개로 분할 저장이 되는게 아닌가 라는 생각이 듭니다. 만약 그 것이 맞다면, 한 줄전체가 한 팀이 아니라, 3개의 팀으로 분할 되는 건데, 그럼 한 줄로 표현한 이유가 없는데...
 
@@ -52,7 +52,6 @@ int schedule(){
 
 ## 예제 : 출전 선수 정하기
 
-처음 정해진 출전 순서는 책 p.371에 나와있음<br><br>
 제가 처음에 생각한 방식은<br><br>
 우리팀 선수를 레이팅 순으로 오름차순으로 정렬한 뒤, 둘 중 하나라도 끝에 도달 시, 종료
 1. 첫번째부터 비교해서 우리가 더 낮으면 우리팀 index만 ++하기(그냥 skip)
@@ -106,20 +105,19 @@ int order(vector<int>& russian, vector<int>& korean){
 }
 ```
 
-책의 코드에서는 multiset을 쓰는 게 인상적이었다.
 + multiset의 특징<br>
 -> 대입 시에, 오름차순으로 자동 정렬하고, 중복을 허용한다<br>
 이로 인해 찾고, 삭제하는 작업을 모두 O(log n)에 수행 가능<br>
 전체 시간 복잡도는 O(n log n)이 된다.
 
 + multiset의 내장함수<br>
-lower_bound의 사용<br>
+lower_bound의 사용
 ![lower_bound](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=http%3A%2F%2Fcfile5.uf.tistory.com%2Fimage%2F237CB933597967992FCCE5)
 
 + algorithm 라이브러리의 sort 함수 사용법( 기본적으로 오름차순 정렬)<br> 
-// vector 사용시 -> sort(v.begin(), v.end());<br>
-// 배열 사용시(배열의 이름은 포인터 이므로) -> sort(arr, arr + 10);<br>
-// 다른 기준으로 정렬하고 싶을 시 -> sort(v.begin(), v.end(), cmp);<br>
+vector 사용시 -> sort(v.begin(), v.end());<br>
+배열 사용시(배열의 이름은 포인터 이므로) -> sort(arr, arr + 10);<br>
+다른 기준으로 정렬하고 싶을 시 -> sort(v.begin(), v.end(), cmp);<br>
 3번째 인자로 정렬 기준을 넣어주고, 그 함수는 반환 타입이 bool형 이어야 한다.<br>
 (ex) bool cmp(int a, int b) { return a > b; } -> 내림차순 정렬<br>
 그리고, 기준 함수를 정의 할때, 두 매개변수의 타입은 정렬할 데이터 타입과 일치해야 한다.<br>
@@ -205,7 +203,7 @@ int heat(){
 그런 방식으로 하면, 26으로 나온다.
 
 이 방식을 사용해서 풀 때, 중복을 허용하고, 오름차순으로 정렬을 해야하니 <br>
-multiset을 이용하여 거의 다 구현했을 때 쯤, multiset의 첫번째 인자를 받아오는 기능이 없는 것 같아서 불가능 하다 생각했습니다.<br>
+multiset을 이용하여 풀려 했지만, multiset의 첫번째 인자를 받아오는 기능이 없는 것 같아서 불가능 하다.<br>
 내장함수로 begin()함수가 있지만, iterator를 리턴해주어 값을 출력을 할 수 있지만, int형 변수에 저장은 못하기 때문에, multiset을 이용한 방식은 구현하지 못하였다.
 
 ```
